@@ -2,8 +2,9 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
 const { FederatedTypesPlugin } = require("@module-federation/typescript");
 
+/** @type { ConstructorParameters<typeof ModuleFederationPlugin>[0]} */
 const federationConfig = {
-  name: "cronograma",
+  name: "remote",
   filename: "remote.js",
   exposes: {
     "./Title": "./src/Title",
@@ -21,9 +22,11 @@ const federationConfig = {
   },
 };
 
-module.exports = (_, argv) => ({
+/** @type { import('webpack').Configuration } */
+const config = {
   output: {
-    publicPath: "https://module-federation-oew.pages.dev/",
+    // publicPath: "https://module-federation-oew.pages.dev/",
+    publicPath: "http://localhost:4000/",
   },
 
   resolve: {
@@ -71,4 +74,6 @@ module.exports = (_, argv) => ({
       template: "./src/index.html",
     }),
   ],
-});
+};
+
+module.exports = config;

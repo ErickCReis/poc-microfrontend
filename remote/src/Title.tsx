@@ -1,5 +1,6 @@
 import React from 'react';
-import "./index.scss";
+import "./main.css";
+import { cn } from './utils';
 export default function Title(): React.JSX.Element {
-    return <h1 className='text-red-500'>Cronograma Title Tetse</h1>
+    return <h1 className={cn('text-red-500')}>Cronograma Title</h1>
 }

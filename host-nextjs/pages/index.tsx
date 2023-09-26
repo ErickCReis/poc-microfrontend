@@ -1,14 +1,15 @@
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
-// @ts-ignore
-const CronogramaComponent = dynamic(() => import("cronograma/Title"), {
+const CronogramaComponent = dynamic(() => import("remote/Title"), {
   ssr: false,
 });
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col p-8">
       <CronogramaComponent />
+      <Link href="/cronograma">To Conograma</Link>
     </main>
   );
 }

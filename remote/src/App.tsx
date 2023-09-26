@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import { type router } from "./AppRouter";
 import Title from "./Title";
-import "./index.scss";
+import "./main.css";
 
 // Register your router for maximum type safety
 declare module "@tanstack/react-router" {

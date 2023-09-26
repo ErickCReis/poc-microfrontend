@@ -8,7 +8,8 @@ import {
 } from "@tanstack/react-router";
 import React from "react";
 
-import "./index.scss";
+import "./main.css";
+import { cn } from "./utils";
 
 // Create a root route
 const rootRoute = new RootRoute({
@@ -18,12 +19,12 @@ const rootRoute = new RootRoute({
 function Root() {
   return (
     <>
-      <div className="flex flex-row gap-4">
+      <div className={cn("flex flex-row gap-4")}>
         <Link
           to="/"
-          className="text-2xl"
+          className={cn("text-2xl")}
           activeProps={{
-            className: "font-bold",
+            className: cn("font-bold text-green-500"),
           }}
           activeOptions={{ exact: true }}
         >
@@ -31,9 +32,9 @@ function Root() {
         </Link>
         <Link
           to="/about"
-          className="text-2xl"
+          className={cn("text-2xl")}
           activeProps={{
-            className: "font-bold",
+            className: cn("font-bold"),
           }}
         >
           About
