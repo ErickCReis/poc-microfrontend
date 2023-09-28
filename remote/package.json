@@ -1,17 +1,12 @@
 {
-  "name": "cronograma",
-  "version": "1.0.0",
+  "name": "remote",
+  "version": "0.0.0",
   "scripts": {
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
     "build:start": "cd dist && PORT=4000 npx serve",
     "start": "webpack serve --open --mode development",
     "start:live": "webpack serve --open --mode development --live-reload --hot"
-  },
-  "license": "MIT",
-  "author": {
-    "name": "Jack Herrington",
-    "email": "jherr@pobox.com"
   },
   "dependencies": {
     "@tanstack/react-router": "v0.0.1-beta.192",
@@ -36,7 +31,7 @@
     "html-webpack-plugin": "5.5.3",
     "postcss": "8.4.30",
     "postcss-loader": "7.3.3",
-    "postcss-prefixer": "^3.0.0",
+    "postcss-prefixer": "3.0.0",
     "style-loader": "3.3.3",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2",

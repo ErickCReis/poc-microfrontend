@@ -8,8 +8,8 @@ import {
 } from "@tanstack/react-router";
 import React from "react";
 
-import "./main.css";
-import { cn } from "./utils";
+import "../main.css";
+import { cn } from "../utils/utils";
 
 // Create a root route
 const rootRoute = new RootRoute({

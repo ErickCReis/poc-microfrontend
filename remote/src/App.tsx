@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { type router } from "./AppRouter";
-import Title from "./Title";
+import { type router } from "./components/AppRouter";
+import Title from "./components/Title";
 import "./main.css";
 
 declare module "@tanstack/react-router" {

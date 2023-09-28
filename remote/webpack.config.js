@@ -9,9 +9,9 @@ const federationConfig = {
   name: "remote",
   filename: "remote.js",
   exposes: {
-    "./Title": "./src/Title",
-    "./AppRouter": "./src/AppRouter",
-    "./mount": "./src/mount",
+    "./Title": "./src/components/Title",
+    "./AppRouter": "./src/components/AppRouter",
+    "./mount": "./src/utils/mount",
   },
   shared: {
     ...deps,
