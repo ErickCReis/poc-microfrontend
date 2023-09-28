@@ -2,6 +2,8 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
 const { FederatedTypesPlugin } = require("@module-federation/typescript");
 
+const deps = require("./package.json").dependencies;
+
 /** @type { ConstructorParameters<typeof ModuleFederationPlugin>[0]} */
 const federationConfig = {
   name: "remote",
@@ -9,8 +11,10 @@ const federationConfig = {
   exposes: {
     "./Title": "./src/Title",
     "./AppRouter": "./src/AppRouter",
+    "./mount": "./src/mount",
   },
   shared: {
+    ...deps,
     react: {
       singleton: true,
       requiredVersion: false,

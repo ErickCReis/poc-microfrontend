@@ -5,7 +5,6 @@ import { type router } from "./AppRouter";
 import Title from "./Title";
 import "./main.css";
 
-// Register your router for maximum type safety
 declare module "@tanstack/react-router" {
   interface Register {
     router: typeof router;
