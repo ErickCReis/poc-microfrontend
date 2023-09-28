@@ -1,12 +1,18 @@
 <script lang="ts" setup>
-// @ts-ignore
+import { onMounted, ref } from "vue";
+
 const mount = (await import("remote/mount")).default;
-// @ts-ignore
 const component = (await import("remote/AppRouter")).default;
-// @ts-ignore
-mount(document.getElementsByTagName("div")[0], component({ title: "test" }));
+
+const elRef = ref<HTMLElement | null>(null);
+
+onMounted(() => {
+  if (!elRef.value) return;
+
+  mount(elRef.value, component({ title: "test", basepath: "" }));
+});
 </script>
 
 <template>
-  <div id="#react">test</div>
+  <div ref="elRef"></div>
 </template>

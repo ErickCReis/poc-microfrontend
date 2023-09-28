@@ -1,9 +1,9 @@
 const { NextFederationPlugin } = require("@module-federation/nextjs-mf");
-const { ModuleFederationPlugin } = require("webpack").container;
-const { FederatedTypesPlugin } = require("@module-federation/typescript");
+const { NativeFederationTypeScriptHost } = require('@module-federation/native-federation-typescript/webpack');
+
 
 /** @type { ConstructorParameters<typeof ModuleFederationPlugin>[0]} */
-const federationConfig = {
+const moduleFederationConfig = {
   name: "host",
   remotes: {
     remote: "remote@http://localhost:4000/remote.js",
@@ -15,9 +15,8 @@ const federationConfig = {
 const nextConfig = {
   webpack(config, options) {
     if (!options.isServer) {
-      config.plugins.push(new NextFederationPlugin(federationConfig));
-      config.plugins.push(new ModuleFederationPlugin(federationConfig));
-      config.plugins.push(new FederatedTypesPlugin({ federationConfig }));
+      config.plugins.push(new NextFederationPlugin(moduleFederationConfig));
+      config.plugins.push(NativeFederationTypeScriptHost({ moduleFederationConfig }));
     }
 
     return config;

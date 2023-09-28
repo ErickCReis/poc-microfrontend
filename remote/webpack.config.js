@@ -1,11 +1,12 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
-const { FederatedTypesPlugin } = require("@module-federation/typescript");
+const { NativeFederationTypeScriptRemote } = require('@module-federation/native-federation-typescript/webpack');
+
 
 const deps = require("./package.json").dependencies;
 
 /** @type { ConstructorParameters<typeof ModuleFederationPlugin>[0]} */
-const federationConfig = {
+const moduleFederationConfig = {
   name: "remote",
   filename: "remote.js",
   exposes: {
@@ -72,8 +73,8 @@ const config = {
   },
 
   plugins: [
-    new ModuleFederationPlugin(federationConfig),
-    new FederatedTypesPlugin({ federationConfig }),
+    new ModuleFederationPlugin(moduleFederationConfig),
+    NativeFederationTypeScriptRemote({ moduleFederationConfig }),
     new HtmlWebPackPlugin({
       template: "./src/index.html",
     }),
