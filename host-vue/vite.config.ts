@@ -27,7 +27,7 @@ export default defineConfig({
       moduleFederationConfig: {
         name: "host",
         remotes: {
-          remote: "http://localhost:4000/remote.js",
+          remote: `remote@${process.env.REMOTE_URL}/remote.js`,
         },
       },
     }),
