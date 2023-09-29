@@ -6,8 +6,7 @@ import vue from "@vitejs/plugin-vue";
 import { defineConfig } from "vite";
 
 const moduleFederationConfig: VitePluginFederationOptions = {
-  name: "layout",
-  filename: "remoteEntry.js",
+  name: "host",
   remotes: {
     remote: {
       external: `${process.env.REMOTE_URL}/remote.js`,
@@ -16,7 +15,6 @@ const moduleFederationConfig: VitePluginFederationOptions = {
       from: "webpack",
     },
   },
-  shared: ["vue"],
 };
 
 export default defineConfig({
@@ -25,9 +23,8 @@ export default defineConfig({
     federation(moduleFederationConfig),
     NativeFederationTypeScriptHost({
       moduleFederationConfig: {
-        name: "host",
         remotes: {
-          remote: `remote@${process.env.REMOTE_URL}/remote.js`,
+          remote: `${process.env.REMOTE_URL}/remote.js`,
         },
       },
     }),
@@ -36,12 +33,5 @@ export default defineConfig({
     target: "esnext",
     minify: false,
     cssCodeSplit: true,
-    rollupOptions: {
-      output: {
-        format: "esm",
-        entryFileNames: "assets/[name].js",
-        minifyInternalExports: false,
-      },
-    },
   },
 });
