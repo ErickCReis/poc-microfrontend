@@ -29,14 +29,14 @@ const moduleFederationConfig = {
 };
 
 /**
- * @param {Object.<string,any>} env
  * @returns { import('webpack').Configuration }
  */
-const config = (env) => ({
+const config = (_, argv) => ({
   output: {
-    publicPath: env.production
-      ? "https://poc-microfrontend.vercel.app/"
-      : "http://localhost:4000/",
+    publicPath:
+      argv.mode === "production"
+        ? "https://poc-microfrontend.vercel.app/"
+        : "http://localhost:4000/",
   },
 
   resolve: {
