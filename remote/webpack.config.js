@@ -1,7 +1,8 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
-const { NativeFederationTypeScriptRemote } = require('@module-federation/native-federation-typescript/webpack');
-
+const {
+  NativeFederationTypeScriptRemote,
+} = require("@module-federation/native-federation-typescript/webpack");
 
 const deps = require("./package.json").dependencies;
 
@@ -27,11 +28,15 @@ const moduleFederationConfig = {
   },
 };
 
-/** @type { import('webpack').Configuration } */
-const config = {
+/**
+ * @param {Object.<string,any>} env
+ * @returns { import('webpack').Configuration }
+ */
+const config = (env) => ({
   output: {
-    // publicPath: "https://module-federation-oew.pages.dev/",
-    publicPath: "http://localhost:4000/",
+    publicPath: env.production
+      ? "https://poc-microfrontend.vercel.app/"
+      : "http://localhost:4000/",
   },
 
   resolve: {
@@ -79,6 +84,6 @@ const config = {
       template: "./src/index.html",
     }),
   ],
-};
+});
 
 module.exports = config;

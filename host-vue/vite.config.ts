@@ -1,16 +1,16 @@
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
+import { NativeFederationTypeScriptHost } from "@module-federation/native-federation-typescript/vite";
 import federation, {
   type VitePluginFederationOptions,
 } from "@originjs/vite-plugin-federation";
-import { NativeFederationTypeScriptHost } from "@module-federation/native-federation-typescript/vite";
+import vue from "@vitejs/plugin-vue";
+import { defineConfig } from "vite";
 
 const moduleFederationConfig: VitePluginFederationOptions = {
   name: "layout",
   filename: "remoteEntry.js",
   remotes: {
     remote: {
-      external: "http://localhost:4000/remote.js",
+      external: `${process.env.REMOTE_URL}/remote.js`,
       externalType: "url",
       format: "var",
       from: "webpack",
